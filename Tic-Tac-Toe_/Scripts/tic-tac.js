@@ -113,7 +113,7 @@ var next_mv_plr = function(block) { // write player game piece on open tile (ply
 
                 var v = piece; //set current piece (either X or O perf. by random function) to variable ve
                 block.innerText = v; //write player's piece on tile              
-                window.setTimeout(switch_mv, 500);
+                window.setTimeout(switch_mv, 300);
 
             } else {
                 alert("!!! this spot is already taken!!!");
@@ -125,9 +125,9 @@ var next_mv_plr = function(block) { // write player game piece on open tile (ply
                 } else if (block.innerHTML == "") { //determine if tile is empty for user to enter in
 
                     block.innerText = "X"; //write player's piece on tile
-                    window.setTimeout(switch_mv, 500);
+                    window.setTimeout(switch_mv, 300);
                     AI(); //cpu performs right after
-                    window.setTimeout(switch_mv, 500);
+                    window.setTimeout(switch_mv, 300);
                     //switch_mv();
                 } else {
                     alert("!!! this spot is already taken!!!");
