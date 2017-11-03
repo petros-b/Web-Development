@@ -10,7 +10,7 @@ var makeid = function() { //radomly selects whether X or O plays first using mat
     for (var i = 0; i <= 0; i++)
         text += possible[Math.floor(Math.random() * possible.length)];
 
-    return text;
+    return text; //test 
 };
 
 var piece = makeid(); //random x/o global var. 
