@@ -4,18 +4,20 @@
     <title>The amazing Tic-Tac-Toe game</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="Styles/style.css" />
+    <link rel="sylesheet" href="Styles/normalize (1).css" />
+
     <script src="Scripts/tic-tac.js"></script>
 </head>
 
 <body>
 
     <header>
-        <h1> Start the game!</h1>
+        <h1> Welcome to the Tic-Tac-Toe Game </h1>
 
     </header>
 
     <main>
-
+        <h3>time elapsed: <span id="counter">0</span> sec</h3>
         <table id="tabID">
 
             <tr id="first">
@@ -36,16 +38,15 @@
 
 
         </table>
-        <h3 id="turn"></h3>
-        <form>
+
+        <h3 id="turn">Player's turn:</h3>
+        <form style="text-align:center">
             <input type="radio" name="game style" value="Player vs. Player" id="ply" checked="checked"> Player vs. Player <br>
             <input type="radio" name="game style" value="Player vs. CPU" id="cpu"> Player vs. CPU <br>
         </form>
 
-        <button type="button" id="start_bt" onmousedown="mouse_dwn();">Start/Restart</button>
+        <div style="text-align:center">
+            <button type="button" id="start_bt" onmousedown="mouse_dwn();">Start/Restart</button>
+        </div>
     </main>
-    <footer>
-
-        &copy; Petros Besieris
-    </footer>
 </body>
