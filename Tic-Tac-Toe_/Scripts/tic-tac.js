@@ -10,7 +10,7 @@ var makeid = function() { //radomly selects whether X or O plays first using mat
     for (var i = 0; i <= 0; i++)
         text += possible[Math.floor(Math.random() * possible.length)];
 
-    return text; //test 
+    return text;
 };
 
 var piece = makeid(); //random x/o global var. 
@@ -19,15 +19,29 @@ var cpu_mode = false;
 var lock = false;
 cpu_piece = "O";
 var c = 0;
+var timer;
+var counter = 0;
+
+var timer;
 
 var begin_game_message = function() { //print player's turn in the beginning 
+    timer = setInterval(function() { //cue time 
+        counter++;
+        $("counter").innerHTML = counter;
+
+    }, 1000);
     if (cpu_mode === true) { //if in CPU mode & "Piece"==O , then que CPU to go first 
         if (piece === "O") {
+            alert("CPU goes first");
             AI();
             switch_mv();
 
-        } else { display_turn(piece + "'s" + " " + "turn"); }
+        } else {
+            alert("Player" + " " + "goes first");
+            display_turn(piece + "'s" + " " + "turn");
+        }
     } else {
+        alert("Player" + " " + piece + " " + " goes first");
         display_turn(piece + "'s" + " " + "turn to play"); //display player's turn
     }
 };
@@ -102,7 +116,6 @@ var restart_ = function() //restart game
         window.location.reload(true);
 
     };
-
 var place = false;
 var next_mv_plr = function(block) { // write player game piece on open tile (plyr. v. plyr)
     if (lock === true) { //lock precaution so user clicks on start button prior to filling out board w/ game piece 
@@ -125,10 +138,9 @@ var next_mv_plr = function(block) { // write player game piece on open tile (ply
                 } else if (block.innerHTML == "") { //determine if tile is empty for user to enter in
 
                     block.innerText = "X"; //write player's piece on tile
-                    window.setTimeout(switch_mv, 300);
+                    switch_mv();
                     AI(); //cpu performs right after
                     window.setTimeout(switch_mv, 300);
-                    //switch_mv();
                 } else {
                     alert("!!! this spot is already taken!!!");
                 }
@@ -143,20 +155,23 @@ var ply_again = function() { //button to play again only after game has ended
     if (ans) {
         x = true;
         window.location.reload(true);
-    } else { alert("why the fuck not?"); }
+    } else {
+        clearInterval(timer);
+    }
 };
 var switch_mv = function() { //toggle b/t X/Os when taking turns while also checing to see if win/draw has occured
 
     if (det_win(piece)) {
+        clearInterval(timer);
         alert(piece + " " + "wins!");
         cue_play_agn = true;
         ply_again();
         winning_piece = piece;
+        return true;
     } else if (det_tie() == true) { //if tie has occured, prompt user a tie has happened
         alert("The game has ended in a Draw!");
         cue_play_agn = true;
         ply_again();
-
         return true;
 
     } else if (cpu_mode != true) {
@@ -231,8 +246,12 @@ var det_win = function(current) { //check all possible winning options
     return win; //return win var. if 0 - no win. 1- indicates win 
 };
 
+
+
 window.onload = function() {
     var btn = $("start_bt");
     var getss =
         btn.addEventListener("click", begin_game_message);
+
+
 };
