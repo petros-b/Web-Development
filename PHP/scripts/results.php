@@ -30,7 +30,7 @@ try{
     </head> 
  <body> 
    
-    <h2> List of registered students with accomodating time slots:</h2>
+    <h2> List of registered students with accommodating time slots:</h2>
         <table> 
         <tr>    
         <th> UMID</th> 

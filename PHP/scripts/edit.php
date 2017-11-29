@@ -161,7 +161,7 @@ $result->execute();
 $rows6= $result->fetch();
 $result->closeCursor();
 
-$dis="disabled";
+
 
 ?>
 

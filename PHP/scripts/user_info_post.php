@@ -3,12 +3,12 @@
 session_start();
 
   
-$fname=$_POST['f_name'];      
-$lname=$_POST['l_name'];
-$UMID=$_POST['s_ID'];                
-$email=$_POST['email'];   
-$phoneNum=$_POST['p_num'];               
-$projTitle=$_POST['p_title'];
+$fname=htmlspecialchars($_POST['f_name']);      
+$lname=htmlspecialchars($_POST['l_name']);
+$UMID=htmlspecialchars($_POST['s_ID']);                
+$email=htmlspecialchars($_POST['email']);   
+$phoneNum=htmlspecialchars($_POST['p_num']);               
+$projTitle=htmlspecialchars($_POST['p_title']);
 
 $_SESSION['UMID']=$UMID;
 $_SESSION['f_name']=$fname;
